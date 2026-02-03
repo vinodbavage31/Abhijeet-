@@ -153,9 +153,13 @@ export function Hero() {
                 <div className="bg-background rounded-2xl p-2 shadow-2xl">
                   <div className="w-64 h-64 lg:w-80 lg:h-80 relative rounded-xl overflow-hidden bg-gradient-to-br from-purple-500/10 to-blue-500/10">
                     {/* Placeholder for profile image */}
-                    <div className="absolute inset-0 flex items-center justify-center text-6xl font-bold gradient-text">
-                      AJ
-                    </div>
+                    <Image
+                      src="/profile.jpeg"
+                      alt="Abhijeet Jadhav"
+                      fill
+                      className="object-cover"
+                    />
+
                   </div>
                 </div>
               </div>
