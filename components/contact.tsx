@@ -147,16 +147,22 @@ export function Contact() {
           >
             <Card className="border-2 hover:border-primary/50 transition-colors">
               <CardContent className="p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form
+                  action="https://formspree.io/f/xzddkpew"
+                  method="POST"
+                  className="space-y-6"
+                >
+                  {/* Hidden Subject */}
+                  <input type="hidden" name="_subject" value="New Portfolio Message!" />
+
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-2">
                       Your Name
                     </label>
                     <Input
                       id="name"
+                      name="name"
                       placeholder="John Doe"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       required
                       className="transition-all focus:scale-[1.02]"
                     />
@@ -168,10 +174,9 @@ export function Contact() {
                     </label>
                     <Input
                       id="email"
+                      name="email"
                       type="email"
                       placeholder="john@example.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       required
                       className="transition-all focus:scale-[1.02]"
                     />
@@ -183,10 +188,9 @@ export function Contact() {
                     </label>
                     <Textarea
                       id="message"
+                      name="message"
                       placeholder="Tell me about your project or opportunity..."
                       rows={6}
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       required
                       className="transition-all focus:scale-[1.02] resize-none"
                     />
@@ -194,24 +198,15 @@ export function Contact() {
 
                   <motion.button
                     type="submit"
-                    disabled={submitted}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full px-8 py-4 rounded-xl bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+                    className="w-full px-8 py-4 rounded-xl bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center space-x-2"
                   >
-                    {submitted ? (
-                      <>
-                        <span className="mr-2">✓</span>
-                        <span>Message Sent!</span>
-                      </>
-                    ) : (
-                      <>
-                        <Send className="h-5 w-5" />
-                        <span>Send Message</span>
-                      </>
-                    )}
+                    <Send className="h-5 w-5" />
+                    <span>Send Message</span>
                   </motion.button>
                 </form>
+
               </CardContent>
             </Card>
           </motion.div>
