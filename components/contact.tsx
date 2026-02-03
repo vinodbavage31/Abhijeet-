@@ -1,11 +1,10 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Mail, Phone, MapPin, Send, Linkedin, Github } from "lucide-react"
+import { Mail, Send, Linkedin, Github } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Button } from "@/components/ui/button"
 import { useState } from "react"
 
 const contactInfo = [
@@ -193,24 +192,25 @@ export function Contact() {
                     />
                   </div>
 
-                  <Button
+                  <motion.button
                     type="submit"
-                    size="lg"
-                    className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white"
                     disabled={submitted}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full px-8 py-4 rounded-xl bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
                   >
                     {submitted ? (
                       <>
                         <span className="mr-2">✓</span>
-                        Message Sent!
+                        <span>Message Sent!</span>
                       </>
                     ) : (
                       <>
-                        <Send className="mr-2 h-5 w-5" />
-                        Send Message
+                        <Send className="h-5 w-5" />
+                        <span>Send Message</span>
                       </>
                     )}
-                  </Button>
+                  </motion.button>
                 </form>
               </CardContent>
             </Card>

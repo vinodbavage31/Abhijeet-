@@ -22,12 +22,13 @@ export function ProjectCaseStudy({ project }: ProjectCaseStudyProps) {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Button variant="ghost" asChild className="mb-8">
-            <Link href="/#projects">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Projects
-            </Link>
-          </Button>
+          <Link 
+            href="/#projects"
+            className="inline-flex items-center space-x-2 px-6 py-3 rounded-xl hover:bg-accent transition-colors mb-8 group"
+          >
+            <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
+            <span>Back to Projects</span>
+          </Link>
         </motion.div>
 
         {/* Hero section */}
@@ -62,12 +63,17 @@ export function ProjectCaseStudy({ project }: ProjectCaseStudyProps) {
           </div>
 
           {project.github && (
-            <Button asChild size="lg" className={`bg-gradient-to-r ${project.gradient} hover:opacity-90`}>
-              <a href={project.github} target="_blank" rel="noopener noreferrer">
-                <Github className="mr-2 h-5 w-5" />
-                View on GitHub
-              </a>
-            </Button>
+            <motion.a 
+              href={project.github} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className={`inline-flex items-center space-x-2 px-8 py-4 rounded-xl bg-gradient-to-r ${project.gradient} text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300`}
+            >
+              <Github className="h-5 w-5" />
+              <span>View on GitHub</span>
+            </motion.a>
           )}
         </motion.div>
 
@@ -236,13 +242,23 @@ export function ProjectCaseStudy({ project }: ProjectCaseStudyProps) {
           <p className="text-muted-foreground mb-6">
             Let&apos;s discuss how I can help solve your challenges
           </p>
-          <div className="flex justify-center gap-4">
-            <Button asChild size="lg">
-              <Link href="/#contact">Get in Touch</Link>
-            </Button>
-            <Button variant="outline" asChild size="lg">
-              <Link href="/#projects">View More Projects</Link>
-            </Button>
+          <div className="flex flex-wrap justify-center gap-4">
+            <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
+              <Link 
+                href="/#contact"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
+              >
+                Get in Touch
+              </Link>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
+              <Link 
+                href="/#projects"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-xl border-2 border-primary/20 bg-background/50 backdrop-blur-sm hover:border-primary/50 hover:bg-primary/5 font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                View More Projects
+              </Link>
+            </motion.div>
           </div>
         </motion.div>
       </div>

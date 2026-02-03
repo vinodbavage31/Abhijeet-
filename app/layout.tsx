@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { CursorGlow } from "@/components/cursor-glow";
+import { ScrollProgress } from "@/components/scroll-progress";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -57,6 +58,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <ScrollProgress />
           <CursorGlow />
           <Navbar />
           {children}

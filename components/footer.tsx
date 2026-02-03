@@ -1,7 +1,7 @@
 "use client"
 
 import { Github, Linkedin, Mail, Heart, ArrowUp } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion"
 
 const socialLinks = [
   {
@@ -39,13 +39,14 @@ export function Footer() {
     <footer className="relative bg-secondary/50 border-t">
       {/* Scroll to top button */}
       <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
-        <Button
+        <motion.button
           onClick={scrollToTop}
-          size="icon"
-          className="rounded-full shadow-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white"
+          whileHover={{ scale: 1.1, y: -2 }}
+          whileTap={{ scale: 0.9 }}
+          className="w-12 h-12 rounded-full shadow-xl bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white flex items-center justify-center"
         >
           <ArrowUp className="h-5 w-5" />
-        </Button>
+        </motion.button>
       </div>
 
       <div className="container mx-auto px-4 py-12">
@@ -98,21 +99,21 @@ export function Footer() {
             <p className="text-muted-foreground mb-4">
               Open to exciting opportunities in AI/ML engineering and data science.
             </p>
-            <Button
-              asChild
-              className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white"
+            <a 
+              href="#contact"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
-              <a href="#contact">Get In Touch</a>
-            </Button>
+              Get In Touch
+            </a>
           </div>
         </div>
 
         {/* Bottom bar */}
         <div className="pt-8 border-t text-center">
           <p className="text-muted-foreground flex items-center justify-center space-x-1">
-            <span>© 2026 Abhijeet Jadhav. Built with</span>
+            <span>© 2026 Abhijeet Jadhav.</span>
             <Heart className="h-4 w-4 text-red-500 fill-current" />
-            <span>using Next.js &amp; Framer Motion</span>
+            <span>By Vinod Bavage</span>
           </p>
         </div>
       </div>

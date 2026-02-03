@@ -13,14 +13,22 @@ const container = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15
+      staggerChildren: 0.12,
+      delayChildren: 0.1
     }
   }
 }
 
 const item = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0 }
+  hidden: { opacity: 0, y: 40 },
+  show: { 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.25, 0.1, 0.25, 1]
+    }
+  }
 }
 
 export function Projects() {
@@ -95,31 +103,24 @@ export function Projects() {
                   </p>
 
                   <div className="flex gap-3">
-                    <Button
-                      asChild
-                      className={`flex-1 bg-gradient-to-r ${project.gradient} hover:opacity-90 text-white`}
+                    <Link 
+                      href={`/projects/${project.id}`}
+                      className={`flex-1 px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r ${project.gradient} hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 group`}
                     >
-                      <Link href={`/projects/${project.id}`}>
-                        View Case Study
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
+                      <span>View Case Study</span>
+                      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
                     
                     {project.github && (
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        asChild
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="View on GitHub"
+                        className="px-4 py-3 rounded-xl border-2 border-primary/20 bg-background/50 backdrop-blur-sm hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center"
                       >
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="View on GitHub"
-                        >
-                          <Github className="h-4 w-4" />
-                        </a>
-                      </Button>
+                        <Github className="h-5 w-5" />
+                      </a>
                     )}
                   </div>
                 </CardContent>

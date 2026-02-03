@@ -1,8 +1,9 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { Database, Code, Wrench, Brain, Cloud, TrendingUp } from "lucide-react"
+import { motion, useInView } from "framer-motion"
+import { Brain, Code, Wrench } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
+import { useRef } from "react"
 
 const skillCategories = [
   {
@@ -48,18 +49,20 @@ const item = {
   }
 }
 
-export function Skills() {
+export function EnhancedSkills() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.2 })
+
   return (
     <section id="skills" className="py-20 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
@@ -74,8 +77,7 @@ export function Skills() {
         <motion.div
           variants={container}
           initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
+          animate={isInView ? "show" : "hidden"}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {skillCategories.map((category, idx) => {
@@ -112,8 +114,7 @@ export function Skills() {
         {/* Stats Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
         >

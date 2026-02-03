@@ -1,5 +1,5 @@
 import { Hero } from "@/components/hero"
-import { Skills } from "@/components/skills"
+import { EnhancedSkills } from "@/components/enhanced-skills"
 import { Experience } from "@/components/experience"
 import { Projects } from "@/components/projects"
 import { Education } from "@/components/education"
@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <main className="overflow-hidden">
       <Hero />
-      <Skills />
+      <EnhancedSkills />
       <Experience />
       <Projects />
       <Education />
